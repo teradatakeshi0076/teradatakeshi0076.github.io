@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>寺田健志｜映像制作</title>
+<meta name="description" content="編集だけで、終わらせない。誰に何を伝えるかを決めるところから作る動画制作。最短翌日納品。映像制作 寺田健志の作品集です。">
+<meta property="og:title" content="寺田健志｜映像制作">
+<meta property="og:description" content="編集だけで、終わらせない。誰に何を伝えるかを決めるところから作る動画制作。最短翌日納品。">
+<meta property="og:image" content="https://img.youtube.com/vi/uXufWKkc0Q8/maxresdefault.jpg">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f7f5; --paper-2:#eeeeeb; --ink:#151515; --sub:#6b6a66; --line:#e2e2de; --line-2:#d9d9d4;
+  --night:#0b0b0b; --night-2:#111; --night-ink:#f1efea; --night-sub:#9a9891; --night-line:#262626;
+  --warm:#f3e6cf;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN",serif;
+  --sans:"Noto Sans JP","Hiragino Sans",sans-serif;
+  --gut:clamp(20px,5vw,64px); --max:1180px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;background:var(--night)}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.9;letter-spacing:.04em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--ink);color:var(--paper)}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+/* film grain over everything */
+body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+
+/* header */
+.top{position:fixed;inset:0 0 auto;z-index:40;transition:background .5s,color .5s,border-color .5s;border-bottom:1px solid transparent}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.top.solid{background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--line)}
+.top.dark{color:var(--night-ink)}
+.top.dark.scrolled{background:color-mix(in srgb,var(--night) 80%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-color:var(--night-line)}
+.brand{font-family:var(--serif);font-size:18px;font-weight:600;letter-spacing:.14em}
+.brand small{font-family:var(--sans);font-size:12px;font-weight:400;opacity:.6;margin-left:12px;letter-spacing:.08em}
+.nav{display:flex;align-items:center;gap:28px;font-size:13px}
+.nav a.link{opacity:.62;transition:opacity .2s}
+.nav a.link:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:44px;padding:0 22px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:13px;font-weight:500;letter-spacing:.08em;transition:transform .25s var(--ease),opacity .2s,background .4s,color .4s}
+.btn:hover{opacity:.86}
+.btn:active{transform:scale(.97)}
+.top.dark .btn{background:var(--night-ink);color:var(--ink)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;background:var(--night);color:var(--night-ink);overflow:hidden;isolation:isolate;
+  padding:calc(64px + clamp(36px,7vw,90px)) 0 clamp(56px,8vw,100px)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;
+  background:radial-gradient(120% 80% at 92% -10%,rgba(243,230,207,.16),transparent 55%),radial-gradient(80% 60% at 0% 110%,rgba(255,255,255,.04),transparent 60%)}
+#dust{position:absolute;inset:0;z-index:-1;width:100%;height:100%;opacity:0;transition:opacity 1.6s ease}
+#dust.on{opacity:1}
+.hero .wrap{width:100%;display:grid;grid-template-columns:1fr;gap:48px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(40px,10vw,78px);line-height:1.34;letter-spacing:.06em}
+/* Motion Prompt #005 · MIT License (c) 2026 Shohei Ohtaki · https://showheyohtaki.github.io/motion-prompt/#005
+   Mask reveal: a line grows from the centre (0.1–0.5 s), the top line rises from behind it (0.35–1.0 s, quintic out),
+   the bottom line drops from behind it (0.55–1.15 s), then the line shrinks away (2.05–2.3 s). Held, no exit. */
+.hero h1{position:relative;display:inline-block}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln > span{display:block;white-space:nowrap}
+.hero h1 .ln.a{padding-bottom:.06em}
+.hero h1 .ln.b{padding-top:.06em}
+.hero h1 .ln.a > span{transform:translateY(1.25em);animation:mrUp .65s cubic-bezier(.22,1,.36,1) .35s forwards}
+.hero h1 .ln.b > span{transform:translateY(-1.05em);animation:mrUp .6s cubic-bezier(.22,1,.36,1) .55s forwards}
+.hero h1 .rule{display:block;height:2px;background:var(--warm);transform:scaleX(0);animation:mrLine 2.3s linear forwards}
+@keyframes mrUp{to{transform:none}}
+@keyframes mrLine{0%,4.3%{transform:scaleX(0);animation-timing-function:cubic-bezier(.65,0,.35,1)}21.7%{transform:scaleX(1)}89.1%{transform:scaleX(1);animation-timing-function:cubic-bezier(.32,0,.67,0)}100%{transform:scaleX(0)}}
+.lead{margin-top:28px;max-width:30em;color:#bdbab3;font-size:clamp(14px,1.5vw,15.5px);line-height:2}
+.facts{display:flex;gap:28px 40px;margin-top:40px}
+.facts div{font-size:12px;color:var(--night-sub);letter-spacing:.08em;line-height:1.6}
+.facts b{display:block;font-family:var(--serif);font-weight:500;font-size:42px;line-height:1.1;color:var(--night-ink);letter-spacing:.02em;margin-bottom:8px;white-space:nowrap}
+.facts b span{font-size:18px;margin-left:2px}
+.facts i{font-style:normal;font-family:var(--sans);font-size:13px;font-weight:500;margin-right:4px;letter-spacing:.06em}
+.fade{opacity:0;animation:fadein 1.2s var(--ease) forwards}
+.d1{animation-delay:.45s}.d2{animation-delay:.6s}.d3{animation-delay:.75s}
+@keyframes fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.reel{position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:4px;background:#000;box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+.reel img,.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel video{opacity:0;transition:opacity .8s}
+.reel video.playing{opacity:1}
+.reel .cap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:14px;padding:18px 20px;color:#fff;font-size:13px;letter-spacing:.08em;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.play{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.94);color:#111;transition:transform .35s var(--ease)}
+.play svg{width:14px;height:14px;margin-left:3px}
+.reel:hover .play,.card:hover .play{transform:scale(1.08)}
+.scrollcue{position:absolute;left:50%;bottom:22px;width:1px;height:44px;background:linear-gradient(rgba(241,239,234,.0),rgba(241,239,234,.5));transform:translateX(-50%);overflow:hidden}
+.scrollcue::after{content:"";position:absolute;left:0;top:-44px;width:1px;height:44px;background:var(--night-ink);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{to{top:44px}}
+@media (min-width:900px){
+  .hero .wrap{grid-template-columns:1.05fr 1fr;align-items:center;gap:72px}
+  .hero h1{font-size:clamp(44px,4.4vw,62px)}
+}
+
+/* sections */
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:clamp(32px,5vw,56px)}
+.head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.4vw,40px);letter-spacing:.08em;line-height:1.45}
+.head p{margin-top:10px;font-size:13px;color:var(--sub);max-width:26em}
+
+/* difference */
+.diff{padding:clamp(80px,11vw,140px) 0}
+/* reorder motion graphic (plays on its own while on screen) */
+.mg{position:relative;margin:clamp(8px,2vw,20px) 0 clamp(64px,9vw,110px)}
+.mg-stick{display:flex;align-items:center}
+.mg-box{width:100%;margin:0}
+.mg-state{position:relative;height:1.9em;font-family:var(--serif);font-weight:600;font-size:clamp(17px,2.4vw,22px);letter-spacing:.06em;margin-bottom:18px}
+.mg-state span{position:absolute;left:0;top:0;white-space:nowrap;transition:opacity .45s,transform .45s var(--ease)}
+.mg-state .s2{opacity:0;transform:translateY(8px)}
+.mg.flip .mg-state .s1{opacity:0;transform:translateY(-8px)}
+.mg.flip .mg-state .s2{opacity:1;transform:none}
+.mg-track{position:relative;height:clamp(76px,11vw,104px)}
+.clip{position:absolute;top:0;left:0;width:calc((100% - 4 * 6px) / 5);height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px;border-radius:4px;
+  background:#e6e6e2;color:var(--ink);font-size:clamp(11px,1.4vw,14px);font-weight:500;line-height:1.45;letter-spacing:.02em;will-change:transform}
+.clip:nth-child(2){background:#dfdfda}.clip:nth-child(3){background:#d7d7d1}.clip:nth-child(4){background:#cfcfc8}
+.clip.hook{background:var(--ink);color:var(--paper)}
+.mg-track .head{position:absolute;z-index:3;top:-12px;bottom:-12px;left:0;width:2px;margin-left:-1px;background:#c0643a;opacity:0;transition:opacity .3s;will-change:transform}
+.mg-dot{transition:opacity .3s}
+.mg-track .head::before{content:"";position:absolute;top:-5px;left:-4px;width:10px;height:10px;border-radius:50%;background:#c0643a}
+.clip{transition:filter .25s,box-shadow .25s}
+.clip.on{filter:brightness(1.08);box-shadow:0 0 0 2px #c0643a inset}
+.clip.hook.on{filter:brightness(1.6)}
+.mg-dot{position:absolute;left:0;top:0;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#c0643a;box-shadow:0 0 0 6px rgba(192,100,58,.18);will-change:transform}
+.mg-now{position:absolute;left:0;top:0;transition:opacity .3s;transform-origin:left bottom;font-size:12px;font-weight:700;color:#c0643a;white-space:nowrap;will-change:transform}
+.mg-axis{display:flex;justify-content:space-between;margin-top:10px;font-size:11px;color:var(--sub);letter-spacing:.08em}
+.mg-chart{position:relative;margin-top:22px;height:clamp(120px,18vw,190px);border-bottom:1px solid var(--line)}
+.mg-chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.mg-num{position:absolute;right:0;top:-6px;font-family:var(--serif);font-weight:500;font-size:clamp(30px,5vw,46px);line-height:1;letter-spacing:.02em}
+.mg-legend{margin-top:10px;font-size:12px;color:var(--sub);letter-spacing:.06em}
+.cmp{border-top:1px solid var(--ink)}
+.cmp-r{display:grid;grid-template-columns:1fr;gap:12px;padding:32px 0;border-bottom:1px solid var(--line)}
+.cmp-r b{font-size:12px;font-weight:500;color:var(--sub);letter-spacing:.14em}
+.old{font-size:14.5px;line-height:1.85;color:#5f5e5a}
+.old .t{background:linear-gradient(rgba(192,100,58,.9),rgba(192,100,58,.9)) no-repeat 0 62%/0% 1px;transition:background-size .8s var(--ease) .2s}
+.cmp-r.in .old .t{background-size:100% 1px}
+.new{opacity:0;transform:translateY(14px);transition:opacity .9s ease .6s,transform 1s var(--ease) .6s}
+.cmp-r.in .new{opacity:1;transform:none}
+.say{font-family:var(--serif);font-weight:600;font-size:clamp(21px,3vw,28px);line-height:1.55;letter-spacing:.04em}
+.say .p{display:inline-block}
+.res{position:relative;margin-top:12px;padding-left:22px;font-size:14px;font-weight:700;line-height:1.8;color:var(--ink)}
+.res::before{content:"";position:absolute;left:0;top:calc(.9em - 6px);width:14px;height:12px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12' fill='none' stroke='%23c0643a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 6h11.5M8 1.5 12.5 6 8 10.5'/%3E%3C/svg%3E") no-repeat center/contain}
+@media (min-width:760px){
+  .cmp-r{grid-template-columns:140px minmax(0,1fr) minmax(0,1.6fr);gap:0 40px;align-items:start;padding:38px 0}
+  .cmp-r b,.old{padding-top:.5em}
+}
+@media (prefers-reduced-motion:reduce){.old .t,.new{transition:none}}
+.speed{position:relative;overflow:hidden;margin-top:clamp(40px,6vw,64px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 36px;padding:clamp(28px,4vw,40px) clamp(24px,4vw,44px);background:var(--night);color:var(--night-ink);border-radius:6px}
+.speed::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 140% at 100% 0%,rgba(243,230,207,.14),transparent 60%);pointer-events:none}
+.speed b{position:relative;font-family:var(--serif);font-weight:600;font-size:clamp(32px,5vw,46px);letter-spacing:.06em;line-height:1.2;white-space:nowrap}
+.speed i{font-style:normal;font-family:var(--sans);font-size:14px;font-weight:500;margin-right:6px}
+.speed p{position:relative;font-size:13px;color:#bdbab3;line-height:1.85}
+.speed small{display:block;margin-top:10px;font-size:11px;color:#8d8a83}
+/* works */
+.works{background:var(--night);color:var(--night-ink);padding:clamp(80px,11vw,140px) 0;overflow:hidden}
+.works .head p{color:var(--night-sub)}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 var(--gut);padding:0 var(--gut) 8px;margin:0 calc(var(--gut) * -1);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+.rail .card{flex:0 0 58vw;max-width:270px;scroll-snap-align:start}
+.railnav{display:none;gap:10px}
+.railnav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--night-line);display:grid;place-items:center;color:var(--night-ink);transition:background .2s,border-color .2s}
+.railnav button:hover{background:#1a1a1a;border-color:#3a3a3a}
+.railnav svg{width:16px;height:16px}
+.progress{margin-top:26px;height:1px;background:var(--night-line);position:relative}
+.progress i{position:absolute;left:0;top:0;height:1px;width:20%;background:var(--night-ink);transition:transform .2s linear}
+.feature{margin-top:clamp(56px,8vw,96px)}
+.card{display:block;text-align:left;width:100%}
+.thumb{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:4px;background:#161616}
+.thumb img,.thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.thumb img{transition:transform 1.2s var(--ease)}
+.thumb video{opacity:0;transition:opacity .7s}
+.thumb video.playing{opacity:1}
+.card:hover .thumb img{transform:scale(1.04)}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.35));pointer-events:none}
+.thumb .play{position:absolute;z-index:1;right:10px;bottom:10px;width:38px;height:38px;opacity:.94}
+.thumb .play svg{width:11px;height:11px}
+.card .cat{display:block;margin-top:16px;font-size:11px;color:var(--night-sub);letter-spacing:.12em}
+.card h3{margin-top:4px;font-size:14px;font-weight:500;line-height:1.6;letter-spacing:.04em}
+.card .one{margin-top:6px;font-size:12px;line-height:1.75;color:var(--night-sub)}
+.card.wide .thumb{aspect-ratio:2.4/1}
+@media (min-width:760px){
+  .rail{gap:22px}
+  .rail .card{flex-basis:260px}
+  .railnav{display:flex}
+  .card.wide{display:grid;grid-template-columns:2fr 1fr;gap:36px;align-items:end}
+  .card.wide .cat{margin-top:0}
+  .card.wide h3{font-size:20px;font-family:var(--serif);font-weight:600;letter-spacing:.06em}
+  .card.wide .one{font-size:13px}
+}
+
+/* cases */
+.cases{padding:clamp(80px,11vw,140px) 0 0}
+.case{display:grid;grid-template-columns:1fr;gap:28px;padding:clamp(36px,6vw,72px) 0;border-top:1px solid var(--line)}
+.case:first-child{border-top:1px solid var(--ink)}
+.case .media{position:relative;justify-self:start;width:min(78%,280px);aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:#111;clip-path:inset(100% 0 0 0);transition:clip-path 1.3s var(--ease)}
+.case.wide .media{width:100%;aspect-ratio:2.4/1}
+.case.in .media{clip-path:inset(0 0 0 0)}
+.case .media img,.case .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.case .media video{opacity:0;transition:opacity .7s}
+.case .media video.playing{opacity:1}
+.case .media .play{position:absolute;right:12px;bottom:12px;width:42px;height:42px;z-index:1}
+.case .cat{font-size:11px;color:var(--sub);letter-spacing:.14em}
+.case h3{margin-top:6px;font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,34px);line-height:1.45;letter-spacing:.06em}
+.case dl{margin-top:26px}
+.case dl div{display:grid;grid-template-columns:1fr;gap:4px;padding:16px 0;border-top:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .9s var(--ease)}
+.case.in dl div{opacity:1;transform:none}
+.case.in dl div:nth-child(2){transition-delay:.12s}.case.in dl div:nth-child(3){transition-delay:.24s}
+.case dt{font-size:12px;font-weight:500;color:var(--sub);letter-spacing:.12em}
+.case dd{font-size:14.5px;line-height:1.95}
+.case .watch{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:13px;font-weight:500;letter-spacing:.08em;border-bottom:1px solid var(--ink);padding-bottom:3px}
+@media (min-width:860px){
+  .case{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
+  .case:nth-child(even){grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+  .case:nth-child(even) .media{order:2}
+  .case .media{justify-self:stretch;width:100%;max-width:340px;aspect-ratio:9/16}
+  .case:nth-child(odd) .media{justify-self:start}
+  .case:nth-child(even) .media{justify-self:end}
+  .case.wide{grid-template-columns:1fr}
+  .case.wide .media{max-width:none}
+  .case.wide .txt{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}
+  .case.wide dl{margin-top:0}
+  .case dl div{grid-template-columns:130px 1fr;gap:20px;align-items:baseline}
+}
+
+/* faq */
+.faq{background:var(--paper-2);padding:clamp(80px,11vw,140px) 0}
+.faq .head p{color:var(--sub)}
+.qa{border-top:1px solid var(--ink)}
+.qa .item{border-bottom:1px solid var(--line-2)}
+.qa .q{width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;cursor:pointer;font-family:var(--serif);font-weight:600;font-size:clamp(17px,2.2vw,21px);line-height:1.6;letter-spacing:.05em}
+.qa .pm{flex:none;position:relative;width:34px;height:34px;border:1px solid #c9c3b8;border-radius:50%;transition:background .3s,border-color .3s}
+.qa .pm::before,.qa .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;background:var(--ink);transition:transform .45s var(--ease),background .3s}
+.qa .pm::after{transform:rotate(90deg)}
+.qa .item.open .pm{background:var(--ink);border-color:var(--ink)}
+.qa .item.open .pm::before,.qa .item.open .pm::after{background:var(--paper)}
+.qa .item.open .pm::after{transform:rotate(0)}
+.qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.qa .item.open .ans{grid-template-rows:1fr}
+.qa .ans > div{overflow:hidden}
+.qa .ans p{padding:0 clamp(0px,5vw,54px) 26px 0;color:#4d4c48;font-size:14.5px;line-height:2}
+.qa .ans small{display:block;margin-top:6px;font-size:12px;color:var(--sub)}
+@media (min-width:860px){
+  .faq .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}
+  .faq .head{position:sticky;top:100px;margin-bottom:0}
+}
+
+/* voices */
+.voices{padding:clamp(80px,11vw,140px) 0 0}
+.vlist{display:grid;grid-template-columns:1fr;gap:18px}
+.voice{position:relative;padding:clamp(26px,4vw,40px);background:#fff;border:1px solid var(--line);border-radius:6px}
+.voice::before{content:"“";position:absolute;top:6px;left:18px;font-family:var(--serif);font-size:64px;line-height:1;color:var(--line)}
+.voice q{display:block;quotes:none;position:relative;font-family:var(--serif);font-weight:500;font-size:clamp(16px,1.9vw,18px);line-height:1.95;letter-spacing:.04em}
+.voice .who{display:flex;align-items:center;gap:12px;margin-top:22px;font-size:12px;color:var(--sub);letter-spacing:.06em}
+.voice .who b{font-size:13px;font-weight:500;color:var(--ink)}
+.voice .who a{margin-left:auto;border-bottom:1px solid var(--line);color:var(--ink)}
+@media (min-width:760px){.vlist{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}}
+
+/* approach */
+.approach{padding:clamp(80px,11vw,140px) 0}
+.steps{display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+.steps li{list-style:none;display:grid;gap:6px;padding:28px 0;border-bottom:1px solid var(--line)}
+.steps h3{font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:.06em}
+.steps p{color:var(--sub);font-size:14px}
+.scope{margin-top:48px;display:flex;flex-wrap:wrap;gap:10px}
+.scope span{font-size:13px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.45)}
+@media (min-width:760px){.steps{grid-template-columns:1fr 1fr;column-gap:56px}}
+
+/* contact */
+.contact{position:relative;overflow:hidden;background:var(--night);color:var(--night-ink);padding:clamp(88px,12vw,160px) 0 clamp(100px,12vw,160px)}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 85% 0%,rgba(243,230,207,.13),transparent 60%);pointer-events:none}
+.contact .wrap{position:relative}
+.contact h2{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.6vw,54px);line-height:1.5;letter-spacing:.06em}
+.contact h2 span{display:inline-block;white-space:nowrap}
+.contact p{margin-top:22px;color:#bdbab3}
+.contact .row{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:40px}
+.contact .btn{height:58px;padding:0 36px;font-size:14px;background:var(--night-ink);color:var(--ink)}
+.contact .mail{font-size:14px;color:#bdbab3;border-bottom:1px solid #3a3a3a;padding-bottom:2px;transition:color .2s,border-color .2s}
+.contact .mail:hover{color:var(--night-ink);border-color:var(--night-ink)}
+footer{background:var(--night);color:var(--night-sub);padding:26px 0 calc(26px + env(safe-area-inset-bottom));font-size:12px;border-top:1px solid var(--night-line)}
+
+/* floating contact (phones) */
+.float{background:var(--paper);color:var(--ink);border:1px solid var(--line);position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;transform:translate(-50%,160%);transition:transform .5s var(--ease);box-shadow:0 12px 34px rgba(0,0,0,.28)}
+.float.show{transform:translate(-50%,0)}
+@media (min-width:760px){.float{display:none}}
+
+/* player */
+dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;color:#fff}
+dialog::backdrop{background:rgba(6,6,6,.94);backdrop-filter:blur(6px)}
+dialog[open] .pl{animation:fadein .5s var(--ease)}
+.pl{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:64px 16px calc(24px + env(safe-area-inset-bottom))}
+.frame{position:relative;width:min(100%,calc((100dvh - 230px)*16/9),1100px);aspect-ratio:16/9;background:#000;border-radius:4px;overflow:hidden}
+.frame.v{aspect-ratio:9/16;width:min(100%,calc((100dvh - 230px)*9/16),420px)}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.info{width:min(100%,640px);text-align:center}
+.info h3{font-size:15px;font-weight:500;letter-spacing:.06em}
+.info p{margin-top:6px;font-size:12px;color:#a9a7a1;line-height:1.8}
+.info a{display:inline-block;margin-top:10px;font-size:12px;color:#d9d7d2;border-bottom:1px solid #555}
+.close{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;display:grid;place-items:center;border-radius:50%;color:#fff}
+.close svg{width:22px;height:22px}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:759px){
+  .nav a.link{display:none}
+  .brand small{display:none}
+  .btn.sm{height:38px;padding:0 16px;font-size:12px}
+  .head{flex-direction:column;align-items:flex-start;gap:6px}
+  .head p{max-width:none}
+  .facts{gap:26px}
+  .facts b{font-size:32px}
+  .facts b span{font-size:15px}
+  .facts i{font-size:11px}
+  .facts div{font-size:11px}
+  .scrollcue{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  body::after{animation:none}
+  .rv,.fade{opacity:1;transform:none;transition:none;animation:none}
+  .hero h1 .ln > span{transform:none!important;animation:none!important}
+  .hero h1 .rule{animation:none}
+  .thumb img{transition:none}
+  .scrollcue::after{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top dark" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">寺田健志<small>映像制作</small></a>
+    <nav class="nav">
+      <a class="link" href="#diff">違い</a>
+      <a class="link" href="#works">作品</a>
+      <a class="link" href="#cases">事例の裏側</a>
+      <a class="link" href="#faq">よくある質問</a>
+      <a class="btn sm js-mail" href="#contact">相談する</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <canvas id="dust" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <h1><span class="ln a"><span>編集だけで、</span></span><span class="rule" aria-hidden="true"></span><span class="ln b"><span>終わらせない。</span></span></h1>
+        <p class="lead fade d1">届いた素材をつなぐだけではなく、「誰に、何を伝えたいか」を一緒に決めるところから作ります。15年間の接客で身につけた、お客さんが見るのをやめてしまうポイントを外さない動画を、お急ぎなら最短で翌日にお届けします。</p>
+        <div class="facts fade d2">
+          <div><b><i>最短</i>翌日</b>納品（特急の場合）</div>
+          <div><b>15<span>年</span></b>接客・お店づくり</div>
+          <div><b>7<span>年</span></b>動画制作</div>
+        </div>
+      </div>
+      <button class="reel fade d3 js-play" data-id="uXufWKkc0Q8" data-title="自己紹介PV" data-text="企画・構成から編集まで。目的に合わせた表現の幅を紹介しています。" aria-label="自己紹介PVを再生">
+        <img src="https://img.youtube.com/vi/uXufWKkc0Q8/maxresdefault.jpg" alt="" width="1280" height="720">
+        <video muted playsinline loop preload="none" data-clip="uXufWKkc0Q8"></video>
+        <span class="cap"><span class="play"><svg viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg></span>自己紹介PVを見る</span>
+      </button>
+    </div>
+    <span class="scrollcue" aria-hidden="true"></span>
+  </section>
+
+  <section class="diff" id="diff">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <h2>同じ素材でも、<br>ここまで変わる。</h2>
+          <p>リールも企業PVも。「きれいに整える」だけの編集との違いは、見た人がそのあと動いてくれるかどうかです。</p>
+        </div>
+      </div>
+      <div class="mg" id="mg">
+        <div class="mg-stick">
+          <figure class="mg-box" aria-label="同じ素材でも、並べる順番を変えると最後まで見てもらえる人が増える様子の図">
+            <p class="mg-state"><span class="s1">撮った順のまま</span><span class="s2">最初の数秒で引き込む順に組み直すと</span></p>
+            <div class="mg-track" id="track">
+              <div class="clip" data-a="0" data-b="4">お店の<br>場所</div>
+              <div class="clip" data-a="1" data-b="3">あいさつ</div>
+              <div class="clip" data-a="2" data-b="1">施術の<br>様子</div>
+              <div class="clip" data-a="3" data-b="2">お客様<br>の声</div>
+              <div class="clip hook" data-a="4" data-b="0">施術前と<br>後の変化</div>
+              <i class="head" id="phead"></i>
+            </div>
+            <div class="mg-axis"><span>動画のはじめ</span><span>おわり</span></div>
+            <div class="mg-chart">
+              <svg viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
+                <path id="ghost" fill="none" stroke="#cacac4" stroke-width="2" stroke-dasharray="6 7" vector-effect="non-scaling-stroke"/>
+                <path id="area" fill="rgba(21,21,21,.06)"/>
+                <path id="curve" fill="none" stroke="#151515" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <b class="mg-num" id="mgnum">23%</b>
+              <i class="mg-dot" id="mgdot" aria-hidden="true"></i>
+              <span class="mg-now" id="mgnow" aria-hidden="true"></span>
+            </div>
+            <figcaption class="mg-legend">最後まで見ている人の割合（イメージ）</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="cmp" role="table" aria-label="編集だけの場合と、寺田の動画づくりの違い">
+        <div class="cmp-r" role="row"><b role="rowheader">見た人の反応</b><p class="old" role="cell"><span class="t">「きれいな動画だね」で終わる</span></p><div class="new" role="cell"><p class="say"><span class="p">「このお店に行きたい」</span><span class="p">「この会社に頼みたい」と</span><span class="p">思わせる</span></p><p class="res">見て終わりではなく、予約や問い合わせにつながる動画に。</p></div></div>
+        <div class="cmp-r" role="row"><b role="rowheader">最初の数秒</b><p class="old" role="cell"><span class="t">あいさつや会社名から始まり、すぐ飛ばされる</span></p><div class="new" role="cell"><p class="say"><span class="p">一番の見どころから始めて、</span><span class="p">続きを見たくさせる</span></p><p class="res">最後まで見てもらえるので、伝えたいことがきちんと届く。</p></div></div>
+        <div class="cmp-r" role="row"><b role="rowheader">あなたの手間</b><p class="old" role="cell"><span class="t">構成も見せ方も、自分で考えて指示する</span></p><div class="new" role="cell"><p class="say"><span class="p">素材を送るだけ。</span><span class="p">何を伝えるかは</span><span class="p">一緒に決める</span></p><p class="res">忙しくても、本業の時間を削らずに動画を用意できる。</p></div></div>
+        <div class="cmp-r" role="row"><b role="rowheader">頼める範囲</b><p class="old" role="cell"><span class="t">カットと字幕だけ。ほかは別の業者を探す</span></p><div class="new" role="cell"><p class="say"><span class="p">台本・図解・アニメ・</span><span class="p">音楽・ナレーションまで、</span><span class="p">まとめて一人に</span></p><p class="res">やり取りが一か所で済み、仕上がりの雰囲気もそろう。</p></div></div>
+        <div class="cmp-r" role="row"><b role="rowheader">使える場所</b><p class="old" role="cell"><span class="t">SNSに投稿して、それきり</span></p><div class="new" role="cell"><p class="say"><span class="p">リール・企業PV・採用動画・</span><span class="p">ホームページまで、</span><span class="p">目的に合わせて作り分ける</span></p><p class="res">同じ素材から、縦型・横型など場面に合った動画が手に入る。</p></div></div>
+      </div>
+      <div class="speed rv">
+        <b><i>最短</i>翌日納品</b>
+        <p>急ぎの告知やキャンペーンにも、<br>間に合わせます。<br>ご希望の日をお知らせください。<small>最短翌日は特急（基本料金の30%増し）の場合です。</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="works" id="works">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <h2>作品</h2>
+          <p>タップで再生。横にずらすと、<br>ほかの作品も見られます。</p>
+        </div>
+        <div class="railnav">
+          <button id="prev" aria-label="前の作品"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg></button>
+          <button id="next" aria-label="次の作品"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg></button>
+        </div>
+      </div>
+      <div class="rail" id="rail"></div>
+      <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+      <div class="feature" id="feature"></div>
+    </div>
+  </section>
+
+  <section class="cases" id="cases">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <h2>制作事例の裏側</h2>
+          <p>どんなねらいで、何を工夫したのか。作品ごとにご紹介します。</p>
+        </div>
+      </div>
+      <div id="caselist"></div>
+    </div>
+  </section>
+
+  <section class="voices" id="voices" hidden>
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <h2>お客様の声</h2>
+          <p>ご依頼いただいた方から、いただいた言葉です。</p>
+        </div>
+      </div>
+      <div class="vlist" id="vlist"></div>
+    </div>
+  </section>
+
+  <section class="approach" id="approach">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <h2>作るときに<br>大事にしていること</h2>
+          <p>15年間、対面でお客様と接してきた経験から、見る人がどこで興味を持ち、どこで離れるかを意識して編集しています。</p>
+        </div>
+      </div>
+      <ul class="steps">
+        <li class="rv"><h3>冒頭で伝わる順番に</h3><p>最初の数秒で「誰向けの、何の動画か」がわかるように並べます。</p></li>
+        <li class="rv"><h3>伝えることを絞る</h3><p>伝えたいことが多い場合は、1本で一番届けたいことを一緒に決めます。</p></li>
+        <li class="rv"><h3>目に入るテロップ</h3><p>「読ませる」より「パッと目に入る」文字量とデザインに整えます。</p></li>
+        <li class="rv"><h3>一番伝わるカットを選ぶ</h3><p>素材の中から魅力が伝わるカットを選び、より良い使い方もご提案します。</p></li>
+      </ul>
+      <div class="scope rv">
+        <span>台本・構成づくり</span><span>モーショングラフィックス</span><span>イラスト・キャラクター</span><span>アニメーション動画</span><span>オリジナル楽曲・ナレーション</span><span>SNS用の漫画</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <h2>よくある<br>ご相談</h2>
+          <p>ご依頼の前に、よくいただく質問をまとめました。ほかにも気になることがあれば、お気軽にお聞きください。</p>
+        </div>
+      </div>
+      <div class="qa rv" id="qa"></div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap rv">
+      <h2><span>目的に合わせた表現を、</span><span>企画・構成から</span><span>ご提案します。</span></h2>
+      <p>お見積もりやご相談は、メールでお気軽にどうぞ。24時間以内にお返事します。</p>
+      <div class="row">
+        <a class="btn js-mail" href="#">メールで相談する</a>
+        <a class="mail js-mail" href="#">terada0076@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 寺田健志</div></footer>
+
+<a class="btn float js-mail" href="#">メールで相談する</a>
+
+<dialog id="player" aria-label="動画プレーヤー">
+  <div class="pl">
+    <button class="close" id="close" aria-label="閉じる"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <div class="frame" id="frame"></div>
+    <div class="info">
+      <h3 id="pt"></h3>
+      <p id="pd"></p>
+      <a id="py" target="_blank" rel="noopener">YouTubeで開く</a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+// short preview loops that exist in clips/ (YouTube ID); others show the still thumbnail
+const CLIPS=new Set(["kogao-reel","uXufWKkc0Q8","-GYIwfv-Rl8","C1VOc-5YP-g","dbI2MsLsfEA","bGGxuGsrlu8","1qhzuGPzdlg","Drn8smpYTE0","myFZDLKI1Mg","5ngwPOzo8Jo"]);
+const works=[
+ {id:"kogao-reel",v:1,src:"media/kogao-reel.mp4",img:"clips/kogao-reel-thumb.jpg",cat:"図解・3D",t:"小顔矯正の解説リール",s:"頭蓋骨の立体イラストで、顔幅が整う理由を見せる。",d:"「顔の大きさは骨格だから仕方ない」という思い込みに、頭蓋骨の立体イラストで答える38秒のリール。エラ・むくみ・頬骨の位置を示し、施術前と後の変化まで一続きで見せました。"},
+ {id:"-GYIwfv-Rl8",v:1,cat:"モーション",t:"モーションCM",s:"文字・写真・余白を動きでつなぐ、15秒のブランドCM。",d:"タイポグラフィと写真、レイアウトの動きを組み合わせた15秒のブランドCM。限られた時間で洗練された印象と見やすさを両立しました。"},
+ {id:"C1VOc-5YP-g",v:1,cat:"モーション",t:"タイポグラフィCM",s:"見えない技術の価値を、文字の動きで伝える20秒。",d:"目に見えない施術技術の価値を、文字の動きと大胆なレイアウトで表現。配色・文字サイズ・展開の速さを設計し、短時間でも専門性が残る構成にしました。"},
+ {id:"dbI2MsLsfEA",v:1,cat:"ブランド映像",t:"美容サロンPR動画",s:"施術の丁寧さと、空間の余韻を映像に。",d:"手元の動作や施術風景を中心に、繊細な文字と落ち着いたテンポで上質感を演出。価格だけで比べられないブランドイメージづくりを意識しました。"},
+ {id:"bGGxuGsrlu8",v:1,cat:"解説・対話",t:"院長紹介リール",s:"質問と回答で、人柄と専門性を引き出す。",d:"質問と回答を軸に、院長の考え方や患者さんへの向き合い方が伝わる流れを設計。補足のテロップで、音を出さなくても内容がわかります。"},
+ {id:"1qhzuGPzdlg",v:1,cat:"アニメーション",t:"キャラクターアニメ",s:"掛け合いとユーモアで、情報を物語として届ける。",d:"説明だけでは伝わりにくいサービスの魅力を、キャラクター同士の掛け合いで表現。セリフのテンポ・表情・場面の切り替えを工夫しました。"},
+ {id:"Drn8smpYTE0",v:1,cat:"モーション",t:"ポップアート告知CM",s:"鮮やかな配色と大胆な文字で、告知を印象に残す。",d:"予約再開という大切なお知らせを短時間で届けるため、大胆な文字と鮮やかな配色で目を引く構成に。店名・内容・日付を大事な順に見せています。"},
+ {id:"myFZDLKI1Mg",v:1,cat:"解説・対話",t:"図解と実写の解説リール",s:"身近な疑問から、専門知識をわかりやすく。",d:"顔の左右差という身近な悩みを入り口に、専門知識を実写・図解・テロップでわかりやすく表現。疑問から理解、そして施術への関心へつなげました。"},
+ {id:"5ngwPOzo8Jo",v:0,cat:"ブランド映像",t:"シネマティックCM",s:"光・影・余白でつくる世界観から、ブランドの価値を伝える。",d:"商品の機能を説明するだけでなく、映像の質感からブランドの価値を感じてもらうコンセプトCM。情報を絞り、静けさと緊張感を演出しました。"}
+];
+const playIcon='<span class="play"><svg viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg></span>';
+const card=w=>`
+ <button class="card rv js-play${w.v?'':' wide'}" data-id="${w.id}" data-v="${w.v}"${w.src?` data-src="${w.src}"`:''} data-title="${w.t}" data-text="${w.d}" aria-label="${w.t}を再生">
+  <div class="thumb"><img src="${w.img||`https://img.youtube.com/vi/${w.id}/maxresdefault.jpg`}" alt="" loading="lazy" width="1280" height="720"><video muted playsinline loop preload="none" data-clip="${w.id}"></video>${playIcon}</div>
+  <div><span class="cat">${w.cat}</span><h3>${w.t}</h3><p class="one">${w.s}</p></div>
+ </button>`;
+const rail=document.getElementById('rail');
+rail.innerHTML=works.filter(w=>w.v).map(card).join('');
+document.getElementById('feature').innerHTML=works.filter(w=>!w.v).map(card).join('');
+const step=()=>rail.querySelector('.card').offsetWidth+22;
+document.getElementById('prev').onclick=()=>rail.scrollBy({left:-step()*2,behavior:'smooth'});
+document.getElementById('next').onclick=()=>rail.scrollBy({left:step()*2,behavior:'smooth'});
+const bar=document.getElementById('bar');
+const updBar=()=>{const max=rail.scrollWidth-rail.clientWidth;const vis=rail.clientWidth/rail.scrollWidth;bar.style.width=(vis*100)+'%';bar.style.transform=`translateX(${max>0?rail.scrollLeft/max*(1/vis-1)*100:0}%)`};
+rail.addEventListener('scroll',updBar,{passive:true});addEventListener('resize',updBar);updBar();
+
+// behind-the-work cases (from the portfolio sheet: purpose / direction / uses)
+const cases=[
+ {id:"C1VOc-5YP-g",v:1,cat:"モーション",t:"タイポグラフィCM",aim:"目に見えない施術の技術の価値を、20秒で目に見える形にする。",how:"配色・文字の大きさ・出てくる速さを調整し、大胆なレイアウトで「深く、長く」押す技術の力強さを表現しました。",use:"独自の技術やサービスの紹介、短い広告。"},
+ {id:"myFZDLKI1Mg",v:1,cat:"解説・対話",t:"図解と実写の解説リール",aim:"身近な疑問を入り口に、専門的な知識を理解してもらう。",how:"実写・図解・テロップを役割で使い分け、「疑問 → 原因がわかる → 施術に興味がわく」の順に並べました。",use:"美容サロンやクリニックの解説動画、専門サービスの紹介。"},
+ {id:"-GYIwfv-Rl8",v:1,cat:"モーション",t:"モーションCM",aim:"15秒という短い時間で、ブランドの存在感を印象に残す。",how:"文字・写真・余白をリズムよく配置し、限られた時間の中で情報と印象を両立させました。",use:"企業PR、店舗紹介、SNS広告。"},
+ {id:"5ngwPOzo8Jo",v:0,cat:"ブランド映像",t:"シネマティックCM",aim:"機能の説明ではなく、映像の質感と世界観からブランドの価値を伝える。",how:"光と影・余白・文字の位置を設計し、情報を絞ることで静けさと緊張感を演出しました。",use:"高級な商品のコンセプトCM、ブランドのプロモーション。"}
+];
+document.getElementById('caselist').innerHTML=cases.map(c=>`
+ <article class="case${c.v?'':' wide'}">
+  <button class="media js-play" data-id="${c.id}" data-v="${c.v}" data-title="${c.t}" data-text="${c.how}" aria-label="${c.t}を再生">
+   <img src="https://img.youtube.com/vi/${c.id}/maxresdefault.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-clip="${c.id}"></video>${playIcon}
+  </button>
+  <div class="txt">
+   <div><span class="cat">${c.cat}</span><h3>${c.t}</h3></div>
+   <dl><div><dt>ねらい</dt><dd>${c.aim}</dd></div><div><dt>工夫したこと</dt><dd>${c.how}</dd></div><div><dt>使える場面</dt><dd>${c.use}</dd></div></dl>
+  </div>
+ </article>`).join('');
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');cio.unobserve(e.target)}}),{rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.case,.cmp-r').forEach(c=>cio.observe(c));
+
+// FAQ (answers follow the price list and the Coconala profile)
+const faqs=[
+ ["写真だけでも、動画を作れますか？","はい、作れます。お店や商品の写真に、文字の動きや切り替えをつけて、リールに仕上げます。動画の素材がなくても、お気軽にご相談ください。"],
+ ["撮影もお願いできますか？","撮影は行っていません。スマートフォンで撮った動画や写真をお送りいただければ、そこから制作します。何を撮ればよいか迷う場合は、ご相談の時にお伝えします。"],
+ ["素材が少なくても大丈夫ですか？","大丈夫です。足りない部分は、図解・イラスト・ナレーションで補って、伝わる動画にします。"],
+ ["編集以外に、どこまでお願いできますか？","台本・構成づくり、モーショングラフィックス、イラスト・キャラクター、アニメーション、オリジナル楽曲・ナレーション、SNS用の漫画まで、まとめてお任せいただけます。"],
+ ["急ぎでも間に合いますか？","特急（基本料金の30%増し）なら、最短で翌日にお届けします。通常は、リールで2〜4日、企業PVで3〜7営業日が目安です。","日数は、プランと内容によって変わります。"],
+ ["修正は何回までできますか？","無料の修正は、ライトプランで1回、スタンダード・プレミアムで2回です。それ以上は、リール1,500円、企業PV5,000円で追加できます。"],
+ ["料金はどのくらいですか？","リール（〜60秒）は3,000円から、企業PV（60〜120秒）は12,000円からです。初めてのご依頼では、お好きなオプションを1つ無料でお付けします。","表示価格は税別です。初回無料のオプションは10,000円相当までで、オリジナル楽曲・アニメーション動画は対象外です。"],
+ ["やり取りは、どなたとするのですか？","作る本人と直接やり取りします。ご連絡には24時間以内にお返事します。"]
+];
+const qa=document.getElementById('qa');
+qa.innerHTML=faqs.map((f,i)=>`
+ <div class="item"><button class="q" aria-expanded="false" aria-controls="a${i}" id="q${i}">${f[0]}<span class="pm" aria-hidden="true"></span></button>
+  <div class="ans" id="a${i}" role="region" aria-labelledby="q${i}"><div><p>${f[1]}${f[2]?`<small>${f[2]}</small>`:''}</p></div></div></div>`).join('');
+qa.querySelector('.item').classList.add('open');qa.querySelector('.q').setAttribute('aria-expanded','true');
+qa.querySelectorAll('.q').forEach(b=>b.addEventListener('click',()=>{const it=b.parentElement,o=!it.classList.contains('open');it.classList.toggle('open',o);b.setAttribute('aria-expanded',o)}));
+
+// customer voices: only real comments the client agreed to publish. The section stays hidden while this is empty.
+// {text:"いただいた言葉", name:"お名前（例：〇〇様）", role:"業種・お店（例：美容サロン経営）", work:"関連する作品のYouTube ID（なければ空）"}
+const voices=[];
+if(voices.length){
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  document.getElementById('vlist').innerHTML=voices.map(v=>`
+   <figure class="voice rv"><q>${esc(v.text)}</q>
+    <figcaption class="who"><span><b>${esc(v.name)}</b>${v.role?'　'+esc(v.role):''}</span>${v.work?`<a href="https://www.youtube.com/watch?v=${esc(v.work)}" target="_blank" rel="noopener">作った動画</a>`:''}</figcaption>
+   </figure>`).join('');
+  document.getElementById('voices').hidden=false;
+}
+
+// preview loops: load and play only while on screen
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const vids=[...document.querySelectorAll('video[data-clip]')].filter(v=>CLIPS.has(v.dataset.clip));
+document.querySelectorAll('video[data-clip]').forEach(v=>{if(!CLIPS.has(v.dataset.clip))v.remove()});
+const vio=new IntersectionObserver(es=>es.forEach(e=>{
+  const v=e.target;
+  if(e.isIntersecting){
+    if(!v.src){v.poster=`clips/${v.dataset.clip}.jpg`;v.src=`clips/${v.dataset.clip}.mp4`}
+    if(!reduce)v.play().catch(()=>{});
+  }else v.pause();
+}),{threshold:.35});
+vids.forEach(v=>{v.addEventListener('playing',()=>v.classList.add('playing'));vio.observe(v)});
+
+// player
+const dlg=document.getElementById('player'),frame=document.getElementById('frame');
+function openPlayer(el){
+  const id=el.dataset.id;
+  frame.className='frame'+(el.dataset.v==='1'?' v':'');
+  const py=document.getElementById('py');
+  if(el.dataset.src){
+    // works hosted with the page (not on YouTube)
+    const poster=el.querySelector('img')?.getAttribute('src')||'';
+    frame.innerHTML=`<video src="${el.dataset.src}" poster="${poster}" controls autoplay playsinline style="position:absolute;inset:0;width:100%;height:100%;background:#000"></video>`;
+    py.hidden=true;
+  }else if(!/^https?:$/.test(location.protocol)){
+    // YouTube refuses embeds without a web address (error 153), e.g. when the file is opened directly
+    window.open('https://www.youtube.com/watch?v='+id,'_blank','noopener');
+    return;
+  }else{
+    frame.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1&rel=0&origin=${encodeURIComponent(location.origin)}" title="${el.dataset.title}" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    py.hidden=false; py.href='https://www.youtube.com/watch?v='+id;
+  }
+  document.getElementById('pt').textContent=el.dataset.title;
+  document.getElementById('pd').textContent=el.dataset.text||'';
+  vids.forEach(v=>v.pause());
+  dlg.showModal();
+}
+dlg.addEventListener('close',()=>{frame.innerHTML='';vids.forEach(v=>{const r=v.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight&&!reduce)v.play().catch(()=>{})})});
+document.getElementById('close').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target.classList.contains('pl'))dlg.close()});
+document.querySelectorAll('.js-play').forEach(b=>b.addEventListener('click',()=>openPlayer(b)));
+
+// mail
+const body="寺田様\r\n\r\nポートフォリオを拝見し、ご連絡しました。\r\n\r\n■会社名：\r\n■お名前：\r\n■作りたい動画（例：会社紹介、SNS広告）：\r\n■ご予算：\r\n■希望の納期：\r\n";
+const mailto="mailto:terada0076@gmail.com?subject="+encodeURIComponent("映像制作のご相談（ポートフォリオより）")+"&body="+encodeURIComponent(body);
+document.querySelectorAll('.js-mail').forEach(a=>a.href=mailto);
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(el.closest('.rail')?Math.min(i%8,4)*80:0)+'ms';io.observe(el)});
+
+// reorder motion graphic: plays by itself on a loop while on screen
+// shot order plays → clips swap into hook order → hook order plays → swap back
+(()=>{
+  const mg=document.getElementById('mg'),track=document.getElementById('track'),clips=[...track.querySelectorAll('.clip')],ph=document.getElementById('phead');
+  const ghost=document.getElementById('ghost'),area=document.getElementById('area'),curve=document.getElementById('curve'),num=document.getElementById('mgnum');
+  const dot=document.getElementById('mgdot'),now=document.getElementById('mgnow'),chart=dot.parentElement;
+  const SHOT=[100,68,50,41,35,31,28,26,25,24,23], HOOK=[100,93,88,84,80,77,74,72,70,69,68];   // illustrative only
+  const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)), eIO=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2, eOut=t=>1-Math.pow(1-t,3);
+  const pts=vals=>vals.map((v,i)=>[i*100,232-v*2.2]);
+  const line=p=>p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ');
+  ghost.setAttribute('d',line(pts(SHOT)));
+  const CYC=15;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // how far the clips have moved into hook order (0..1) for clip a at time t
+  const swap=(t,a)=>{
+    const fwd=eIO(clamp((t-5.4-a*0.12)/1.0));
+    const back=eIO(clamp((t-13.3-(4-a)*0.08)/0.8));
+    return fwd*(1-back);
+  };
+  const morph=t=>eOut(clamp((t-5.8)/1.6))*(1-eIO(clamp((t-13.3)/1.0)));
+  // playhead sweeps: shot order 0.6–4.6 s, hook order 7.6–11.6 s
+  const sweep=t=>t>=0.6&&t<4.6?(t-0.6)/4:t>=7.6&&t<11.6?(t-7.6)/4:-1;
+  function render(t){
+    const W=track.clientWidth, cw=clips[0].offsetWidth, gap=(W-cw*5)/4;
+    let rAll=0; const xs=[];
+    clips.forEach(c=>{
+      const a=+c.dataset.a,b=+c.dataset.b, r=swap(t,a); rAll+=r/5;
+      const x=(a+(b-a)*r)*(cw+gap); xs.push(x);
+      const lift=Math.sin(Math.PI*r)*(b<a?-1:1)*Math.min(34,track.clientHeight*.42);
+      c.style.transform=`translate(${x}px,${lift}px)`;
+      c.style.zIndex=b<a?2:1;
+    });
+    mg.classList.toggle('flip',rAll>0.5);
+    const k=morph(t), vals=SHOT.map((v,i)=>v+(HOOK[i]-v)*k), P=pts(vals);
+    curve.setAttribute('d',line(P));
+    area.setAttribute('d',line(P)+' L1000 240 L0 240 Z');
+    num.textContent=Math.round(vals[10])+'%';
+    const h=sweep(t), on=h>=0;
+    ph.style.opacity=on?1:0; dot.style.opacity=on?1:0; now.style.opacity=on&&h<0.68?1:0;
+    clips.forEach((c,i)=>c.classList.toggle('on',on&&h*W>=xs[i]&&h*W<xs[i]+cw));
+    if(on){
+      ph.style.transform=`translateX(${h*W}px)`;
+      const fi=h*10, i=Math.min(9,Math.floor(fi)), v=vals[i]+(vals[i+1]-vals[i])*(fi-i);
+      const ccw=chart.clientWidth, ch=chart.clientHeight, y=(232-v*2.2)/240*ch;
+      dot.style.transform=`translate(${h*ccw}px,${y}px)`;
+      now.textContent=Math.round(v)+'%';
+      now.style.transform=`translate(${Math.min(h*ccw+10,ccw-40)}px,${y-26}px)`;
+    }
+  }
+  if(reduce){render(12);addEventListener('resize',()=>render(12));return}
+  let t=0,last=0,visible=false,raf=0;
+  function loop(ts){
+    raf=0; if(!visible||document.hidden)return;
+    if(last)t=(t+Math.min((ts-last)/1000,0.05))%CYC; last=ts;
+    render(t); raf=requestAnimationFrame(loop);
+  }
+  const go=()=>{if(visible&&!document.hidden&&!raf){last=0;raf=requestAnimationFrame(loop)}};
+  new IntersectionObserver(([e])=>{visible=e.isIntersecting;go()},{threshold:.4}).observe(mg);
+  document.addEventListener('visibilitychange',go);
+  addEventListener('resize',()=>render(t));
+  render(0);
+})();
+
+// when the page is shown inside a preview frame or cannot scroll, "appear on scroll" never fires: show everything
+function revealAll(){document.querySelectorAll('.rv,.case,.cmp-r').forEach(e=>e.classList.add('in'))}
+const embedded=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+const noScroll=()=>document.documentElement.scrollHeight<=innerHeight+80;
+if(embedded||noScroll())revealAll();
+addEventListener('load',()=>{if(noScroll())revealAll()});
+// backup for the observers: reveal anything already on screen after each scroll
+let rvTick=false;
+const rvCheck=()=>{rvTick=false;const h=innerHeight;document.querySelectorAll('.rv:not(.in),.case:not(.in),.cmp-r:not(.in)').forEach(e=>{const r=e.getBoundingClientRect();if(r.top<h*0.9&&r.bottom>0)e.classList.add('in')})};
+addEventListener('scroll',()=>{if(!rvTick){rvTick=true;setTimeout(rvCheck,120)}},{passive:true});
+setTimeout(rvCheck,300);
+
+// header: light text over dark sections, solid over light ones; floating button after hero
+const top_=document.getElementById('top'),fl=document.querySelector('.float');
+const darks=[...document.querySelectorAll('.hero,.works,.contact,footer')];
+let pastHero=false,atContact=false;
+function updHeader(){
+  const y=32; let dark=false;
+  for(const s of darks){const r=s.getBoundingClientRect();if(r.top<=y&&r.bottom>y){dark=true;break}}
+  top_.classList.toggle('dark',dark);
+  top_.classList.toggle('solid',!dark);
+  top_.classList.toggle('scrolled',scrollY>10);
+  const h=document.getElementById('hero').getBoundingClientRect();pastHero=h.bottom<80;
+  const c=document.getElementById('contact').getBoundingClientRect();atContact=c.top<innerHeight*.9;
+  fl.classList.toggle('show',pastHero&&!atContact);
+}
+addEventListener('scroll',updHeader,{passive:true});addEventListener('resize',updHeader);updHeader();
+</script>
+
+<!-- dust drifting in a projector beam (three.js) -->
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js';
+const canvas=document.getElementById('dust'), hero=document.getElementById('hero');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer;
+try{renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,powerPreference:'low-power'})}catch(e){}
+if(renderer){
+  const dpr=Math.min(devicePixelRatio||1,1.75);
+  renderer.setPixelRatio(dpr);
+  renderer.setClearColor(0x0b0b0b,1);
+  const scene=new THREE.Scene(), cam=new THREE.Camera();
+  const U={uTime:{value:0},uAspect:{value:1},uDpr:{value:dpr},uPtr:{value:new THREE.Vector2()}};
+  // shared beam shape: a cone of light from just outside the top-right corner
+  const BEAM=`
+    float beam(vec2 ndc,float aspect){
+      vec2 p=vec2(ndc.x*aspect,ndc.y);
+      vec2 src=vec2(0.92*aspect,1.18);
+      vec2 dir=normalize(vec2(-0.62*aspect,-1.0));
+      vec2 d=p-src; float along=dot(d,dir); float across=abs(d.x*dir.y-d.y*dir.x);
+      float w=0.10+along*0.30;
+      float m=smoothstep(w,w*0.15,across)*smoothstep(-0.05,0.25,along)*smoothstep(3.2,1.2,along);
+      return m;
+    }`;
+  // the beam itself
+  const beamMat=new THREE.ShaderMaterial({uniforms:U,depthTest:false,depthWrite:false,
+    vertexShader:`varying vec2 vN;void main(){vN=position.xy;gl_Position=vec4(position.xy,0.,1.);}`,
+    fragmentShader:`precision highp float;uniform float uTime,uAspect;varying vec2 vN;${BEAM}
+      float h(float n){return fract(sin(n)*43758.5453);}
+      void main(){
+        float m=beam(vN,uAspect);
+        float flick=0.94+0.06*h(floor(uTime*18.));
+        vec3 base=vec3(0.043);
+        vec3 warm=vec3(0.95,0.89,0.78);
+        vec3 c=base+warm*m*0.115*flick;
+        float vig=smoothstep(1.6,0.2,length(vN*vec2(0.9,1.1)));
+        gl_FragColor=vec4(c*mix(0.72,1.,vig),1.);
+      }`});
+  scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),beamMat));
+  // dust motes
+  const N=innerWidth<760?520:1100;
+  const seeds=new Float32Array(N*4);
+  for(let i=0;i<N*4;i++)seeds[i]=Math.random();
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(N*3),3));
+  g.setAttribute('aSeed',new THREE.BufferAttribute(seeds,4));
+  const dustMat=new THREE.ShaderMaterial({uniforms:U,transparent:true,depthTest:false,depthWrite:false,blending:THREE.AdditiveBlending,
+    vertexShader:`precision highp float;attribute vec4 aSeed;uniform float uTime,uAspect,uDpr;uniform vec2 uPtr;varying float vA;varying float vD;${BEAM}
+      void main(){
+        float d=aSeed.z; vD=d;
+        float t=uTime*(0.35+0.65*d);
+        vec2 p=aSeed.xy*2.-1.;
+        p+=vec2(-0.010,0.022)*t;                                  // slow upward drift
+        p+=vec2(sin(t*0.7+aSeed.w*6.283),cos(t*0.53+aSeed.x*6.283))*0.035*(0.4+d);
+        p=mod(p+1.,2.)-1.;
+        p+=uPtr*0.025*(d-0.3);                                    // gentle parallax
+        float m=beam(p,uAspect);
+        float tw=0.65+0.35*sin(uTime*(0.6+aSeed.w*1.4)+aSeed.y*30.);
+        vA=(0.035+0.95*m)*tw*mix(1.,0.55,d);
+        gl_PointSize=mix(1.3,8.5,d*d*d)*uDpr;
+        gl_Position=vec4(p,0.,1.);
+      }`,
+    fragmentShader:`precision highp float;varying float vA;varying float vD;
+      void main(){
+        float r=length(gl_PointCoord-0.5)*2.;
+        float soft=mix(0.25,0.95,vD);
+        float a=smoothstep(1.,1.-soft,r);
+        gl_FragColor=vec4(vec3(1.,0.95,0.86)*a*vA,1.);
+      }`});
+  scene.add(new THREE.Points(g,dustMat));
+
+  const size=()=>{const r=hero.getBoundingClientRect();renderer.setSize(r.width,r.height,false);U.uAspect.value=r.width/Math.max(r.height,1)};
+  size();addEventListener('resize',size);
+  const tgt=new THREE.Vector2();
+  addEventListener('pointermove',e=>{tgt.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight*2-1))},{passive:true});
+  addEventListener('deviceorientation',e=>{if(e.gamma!=null)tgt.set(Math.max(-1,Math.min(1,e.gamma/30)),Math.max(-1,Math.min(1,(e.beta-45)/30)))},{passive:true});
+  let visible=true,raf=0,last=performance.now(),t=8;
+  new IntersectionObserver(([e])=>{visible=e.isIntersecting;if(visible&&!raf&&!reduce)loop()}).observe(hero);
+  function frame(){U.uTime.value=t;U.uPtr.value.lerp(tgt,0.04);renderer.render(scene,cam)}
+  function loop(){
+    raf=0; if(!visible||document.hidden)return;
+    const now=performance.now();t+=Math.min((now-last)/1000,0.05);last=now;
+    frame(); raf=requestAnimationFrame(loop);
+  }
+  document.addEventListener('visibilitychange',()=>{last=performance.now();if(!document.hidden&&visible&&!raf&&!reduce)loop()});
+  frame(); canvas.classList.add('on');
+  if(!reduce)loop();
+}
+</script>
+</body>
+</html>
