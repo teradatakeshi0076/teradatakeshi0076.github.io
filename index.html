@@ -523,8 +523,9 @@ dialog[open] .pl{animation:fadein .5s var(--ease)}
 
 <script>
 // short preview loops that exist in clips/ (YouTube ID); others show the still thumbnail
-const CLIPS=new Set(["kogao-reel","uXufWKkc0Q8","-GYIwfv-Rl8","C1VOc-5YP-g","dbI2MsLsfEA","bGGxuGsrlu8","1qhzuGPzdlg","Drn8smpYTE0","myFZDLKI1Mg","5ngwPOzo8Jo"]);
+const CLIPS=new Set(["swvdBrBjS6M","kogao-reel","uXufWKkc0Q8","-GYIwfv-Rl8","C1VOc-5YP-g","dbI2MsLsfEA","bGGxuGsrlu8","1qhzuGPzdlg","Drn8smpYTE0","myFZDLKI1Mg","5ngwPOzo8Jo"]);
 const works=[
+ {id:"swvdBrBjS6M",v:1,img:"clips/swvdBrBjS6M-thumb.jpg",cat:"3D×モーション",t:"漢方アロマの3Dリール",s:"3Dグラフィックとモーショングラフィックスを掛け合わせた、贅沢な一本。",d:"3Dグラフィックとモーショングラフィックスを掛け合わせた、贅沢な40秒のリール。アニメの女性が線画へほどけ、光の線が肺から親指までの通り道をたどります。一滴が落ちた先に現れるのは、光の反射や液体の透明感まで作り込んだ3Dの小瓶。ナレーションと音楽も重ね、目に見えない香りの世界を映像にしました。"},
  {id:"kogao-reel",v:1,src:"media/kogao-reel.mp4",img:"clips/kogao-reel-thumb.jpg",cat:"図解・3D",t:"小顔矯正の解説リール",s:"頭蓋骨の立体イラストで、顔幅が整う理由を見せる。",d:"「顔の大きさは骨格だから仕方ない」という思い込みに、頭蓋骨の立体イラストで答える38秒のリール。エラ・むくみ・頬骨の位置を示し、施術前と後の変化まで一続きで見せました。"},
  {id:"-GYIwfv-Rl8",v:1,cat:"モーション",t:"モーションCM",s:"文字・写真・余白を動きでつなぐ、15秒のブランドCM。",d:"タイポグラフィと写真、レイアウトの動きを組み合わせた15秒のブランドCM。限られた時間で洗練された印象と見やすさを両立しました。"},
  {id:"C1VOc-5YP-g",v:1,cat:"モーション",t:"タイポグラフィCM",s:"見えない技術の価値を、文字の動きで伝える20秒。",d:"目に見えない施術技術の価値を、文字の動きと大胆なレイアウトで表現。配色・文字サイズ・展開の速さを設計し、短時間でも専門性が残る構成にしました。"},
@@ -553,6 +554,7 @@ rail.addEventListener('scroll',updBar,{passive:true});addEventListener('resize',
 
 // behind-the-work cases (from the portfolio sheet: purpose / direction / uses)
 const cases=[
+ {id:"swvdBrBjS6M",v:1,img:"clips/swvdBrBjS6M-thumb.jpg",cat:"3D×モーション",t:"漢方アロマの3Dリール",aim:"目に見えない香りと体のつながりを、40〜70代の女性に上品に伝える。",how:"3Dグラフィックとモーショングラフィックスを掛け合わせた贅沢な作りです。肺や経絡の説明は線と光の動きで見せ、商品の小瓶はガラスの質感まで3Dで作り込みました。",use:"化粧品や香りなど、質感で選ばれる商品の紹介、高級感を出したいブランドのPR。"},
  {id:"C1VOc-5YP-g",v:1,cat:"モーション",t:"タイポグラフィCM",aim:"目に見えない施術の技術の価値を、20秒で目に見える形にする。",how:"配色・文字の大きさ・出てくる速さを調整し、大胆なレイアウトで「深く、長く」押す技術の力強さを表現しました。",use:"独自の技術やサービスの紹介、短い広告。"},
  {id:"myFZDLKI1Mg",v:1,cat:"解説・対話",t:"図解と実写の解説リール",aim:"身近な疑問を入り口に、専門的な知識を理解してもらう。",how:"実写・図解・テロップを役割で使い分け、「疑問 → 原因がわかる → 施術に興味がわく」の順に並べました。",use:"美容サロンやクリニックの解説動画、専門サービスの紹介。"},
  {id:"-GYIwfv-Rl8",v:1,cat:"モーション",t:"モーションCM",aim:"15秒という短い時間で、ブランドの存在感を印象に残す。",how:"文字・写真・余白をリズムよく配置し、限られた時間の中で情報と印象を両立させました。",use:"企業PR、店舗紹介、SNS広告。"},
@@ -561,7 +563,7 @@ const cases=[
 document.getElementById('caselist').innerHTML=cases.map(c=>`
  <article class="case${c.v?'':' wide'}">
   <button class="media js-play" data-id="${c.id}" data-v="${c.v}" data-title="${c.t}" data-text="${c.how}" aria-label="${c.t}を再生">
-   <img src="https://img.youtube.com/vi/${c.id}/maxresdefault.jpg" alt="" loading="lazy"><video muted playsinline loop preload="none" data-clip="${c.id}"></video>${playIcon}
+   <img src="${c.img||`https://img.youtube.com/vi/${c.id}/maxresdefault.jpg`}" alt="" loading="lazy"><video muted playsinline loop preload="none" data-clip="${c.id}"></video>${playIcon}
   </button>
   <div class="txt">
    <div><span class="cat">${c.cat}</span><h3>${c.t}</h3></div>
