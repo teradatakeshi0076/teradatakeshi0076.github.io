@@ -151,6 +151,36 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
   .cmp-r{grid-template-columns:140px minmax(0,1fr) minmax(0,1.6fr);gap:0 40px;align-items:start;padding:38px 0}
   .cmp-r b,.old{padding-top:.5em}
 }
+/* real example: same footage, two edits */
+.ab{margin:0 0 clamp(64px,9vw,110px)}
+.ab-k{font-size:12px;font-weight:500;color:var(--sub);letter-spacing:.14em}
+.ab-h{margin-top:6px;font-family:var(--serif);font-weight:600;font-size:clamp(21px,3vw,28px);line-height:1.55;letter-spacing:.04em}
+.ab-pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2.4vw,28px);max-width:640px;margin:clamp(20px,3vw,32px) auto 0}
+.ab-v{margin:0}
+.ab-f{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:6px;background:#000}
+.ab-f video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ab-v figcaption{margin-top:12px;font-size:12.5px;line-height:1.7;color:var(--sub)}
+.ab-v figcaption b{display:block;margin-bottom:2px;font-size:14px;font-weight:700;color:var(--ink)}
+.ab-v.ab-a b{color:#5f5e5a}
+.ab-v.ab-b b::before{content:"";display:inline-block;width:7px;height:7px;margin:0 7px 2px 0;border-radius:50%;background:#c0643a}
+.ab-ctl{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px}
+.ab-ctl button{padding:9px 16px;border:1px solid var(--line-2);border-radius:999px;font-size:12.5px;letter-spacing:.06em;transition:background .2s,color .2s,border-color .2s}
+.ab-ctl button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.ab-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:22px;list-style:none}
+.ab-tags li{padding:3px 11px;border-radius:3px;background:var(--paper-2);font-size:12px;letter-spacing:.06em}
+.ab-note{margin-top:12px;text-align:center;font-size:11.5px;color:var(--sub)}
+.ba-wrap{display:grid;gap:20px 40px;align-items:center;margin-top:clamp(40px,6vw,64px);padding-top:clamp(32px,5vw,48px);border-top:1px solid var(--line)}
+.ba{position:relative;width:100%;max-width:420px;margin:0 auto;aspect-ratio:1;overflow:hidden;border-radius:6px;user-select:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%}
+.ba .aft{clip-path:inset(0 0 0 var(--x,50%))}
+.ba i{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;margin-left:-1px;background:#fff;pointer-events:none;box-shadow:0 0 6px rgba(0,0,0,.25)}
+.ba i::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.25);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34' fill='none' stroke='%23151515' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 12 8 17l5 5M21 12l5 5-5 5'/%3E%3C/svg%3E")}
+.ba span{position:absolute;bottom:10px;padding:2px 9px;border-radius:3px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;letter-spacing:.08em;pointer-events:none}
+.ba .l{left:10px}.ba .r{right:10px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.ba-txt p{margin-top:10px;font-size:14px;line-height:1.9}
+@media (min-width:760px){.ba-wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ba{margin:0}}
 @media (prefers-reduced-motion:reduce){.old .t,.new{transition:none}}
 .speed{position:relative;overflow:hidden;margin-top:clamp(40px,6vw,64px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 36px;padding:clamp(28px,4vw,40px) clamp(24px,4vw,44px);background:var(--night);color:var(--night-ink);border-radius:6px}
 .speed::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 140% at 100% 0%,rgba(243,230,207,.14),transparent 60%);pointer-events:none}
@@ -403,6 +433,42 @@ dialog[open] .pl{animation:fadein .5s var(--ease)}
             </div>
             <figcaption class="mg-legend">最後まで見ている人の割合（イメージ）</figcaption>
           </figure>
+        </div>
+      </div>
+      <div class="ab" id="ab">
+        <div class="rv">
+          <p class="ab-k">実例｜FreeFromStyle様 Instagramリール</p>
+          <h3 class="ab-h">同じ素材で、2本作りました。</h3>
+        </div>
+        <div class="ab-pair rv">
+          <figure class="ab-v ab-a">
+            <div class="ab-f"><video muted playsinline loop preload="none" poster="media/ffs-simple.jpg" data-src="media/ffs-simple.mp4"></video></div>
+            <figcaption><b>よくある編集</b>写真を順に並べて、文字を入れて整えたもの</figcaption>
+          </figure>
+          <figure class="ab-v ab-b">
+            <div class="ab-f"><video muted playsinline loop preload="none" poster="media/ffs-full.jpg" data-src="media/ffs-full.mp4"></video></div>
+            <figcaption><b>寺田の制作</b>構成から組み直し、動きと画像の加工まで</figcaption>
+          </figure>
+        </div>
+        <div class="ab-ctl rv" role="group" aria-label="音声">
+          <button type="button" data-snd="-1" aria-pressed="true">音なし</button>
+          <button type="button" data-snd="0" aria-pressed="false">左の音を聞く</button>
+          <button type="button" data-snd="1" aria-pressed="false">右の音を聞く</button>
+        </div>
+        <ul class="ab-tags rv" aria-label="右の動画でしたこと"><li>構成</li><li>モーショングラフィックス</li><li>編集</li><li>画像レタッチ</li></ul>
+        <p class="ab-note">※ 左の「よくある編集」は、比較のために同じ素材で寺田が再現したものです。</p>
+        <div class="ba-wrap rv">
+          <div class="ba" id="ba">
+            <img src="media/ffs-retouch-before.jpg" alt="スマートフォンで撮影したままのシュークリーム。アルミカップがくしゃくしゃになっている" width="720" height="720" loading="lazy">
+            <img class="aft" src="media/ffs-retouch-after.jpg" alt="レタッチ後のシュークリーム。背景を切り抜き、アルミカップを整えて金色に仕上げている" width="720" height="720" loading="lazy">
+            <i aria-hidden="true"></i><span class="l">撮影したまま</span><span class="r">レタッチ後</span>
+            <input type="range" min="0" max="100" value="50" aria-label="レタッチ前と後を見比べる">
+          </div>
+          <div class="ba-txt">
+            <p class="ab-k">画像レタッチ</p>
+            <h3 class="ab-h">スマホで撮った商品も、<br>お店の顔になる一枚に。</h3>
+            <p>お店で撮ったままの動画から商品を切り抜き、くしゃっとしたアルミカップのしわや映り込みを整えました。撮り直しをお願いせずに、届いた素材のままで仕上げています。</p>
+          </div>
         </div>
       </div>
       <div class="cmp" role="table" aria-label="編集だけの場合と、寺田の動画づくりの違い">
@@ -715,6 +781,24 @@ document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(el.c
   document.addEventListener('visibilitychange',go);
   addEventListener('resize',()=>render(t));
   render(0);
+})();
+
+// real example: two edits of the same footage play in step; one side's sound at a time
+(()=>{
+  const ab=document.getElementById('ab'); if(!ab)return;
+  const vs=[...ab.querySelectorAll('.ab-f video')], btns=[...ab.querySelectorAll('[data-snd]')];
+  const start=()=>vs.forEach(v=>{if(!v.src)v.src=v.dataset.src;v.currentTime=0;v.play().catch(()=>{})});
+  new IntersectionObserver(([e])=>{
+    if(e.isIntersecting){if(!reduce||vs[0].src)vs[0].paused&&start()}else vs.forEach(v=>v.pause());
+  },{threshold:.35}).observe(ab.querySelector('.ab-pair'));
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    const k=+b.dataset.snd;
+    btns.forEach(x=>x.setAttribute('aria-pressed',x===b));
+    vs.forEach((v,i)=>v.muted=i!==k);
+    if(k>=0){if(!vs[k].src||vs[k].paused)start();else{vs[k].currentTime=0;vs[1-k].currentTime=0}}
+  }));
+  const ba=document.getElementById('ba'),r=ba.querySelector('input');
+  r.addEventListener('input',()=>ba.style.setProperty('--x',r.value+'%'));
 })();
 
 // when the page is shown inside a preview frame or cannot scroll, "appear on scroll" never fires: show everything
