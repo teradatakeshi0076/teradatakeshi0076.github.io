@@ -92,6 +92,14 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .play{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.94);color:#111;transition:transform .35s var(--ease)}
 .play svg{width:14px;height:14px;margin-left:3px}
 .reel:hover .play,.card:hover .play{transform:scale(1.08)}
+/* tells people a still-looking thumbnail is a video: a softly pulsing play button and a running progress line */
+.play{position:relative;animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}70%,100%{box-shadow:0 0 0 14px rgba(255,255,255,0)}}
+.play b{font-size:12px;font-weight:700;letter-spacing:.06em;white-space:nowrap}
+.pv{position:absolute;z-index:1;left:0;bottom:0;width:100%;height:3px;background:rgba(255,255,255,.22);pointer-events:none}
+.pv::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(var(--p,0));transition:transform .3s linear}
+.reel .cap small{margin-left:auto;padding:3px 10px;border:1px solid rgba(255,255,255,.5);border-radius:999px;font-size:11px;letter-spacing:.08em;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.play{animation:none}}
 .scrollcue{position:absolute;left:50%;bottom:22px;width:1px;height:44px;background:linear-gradient(rgba(241,239,234,.0),rgba(241,239,234,.5));transform:translateX(-50%);overflow:hidden}
 .scrollcue::after{content:"";position:absolute;left:0;top:-44px;width:1px;height:44px;background:var(--night-ink);animation:cue 2.4s var(--ease) infinite}
 @keyframes cue{to{top:44px}}
@@ -201,6 +209,24 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .progress{margin-top:26px;height:1px;background:var(--night-line);position:relative}
 .progress i{position:absolute;left:0;top:0;height:1px;width:20%;background:var(--night-ink);transition:transform .2s linear}
 .feature{margin-top:clamp(56px,8vw,96px)}
+.feature .card + .card{margin-top:clamp(40px,6vw,64px)}
+.tech{display:grid;gap:32px 56px;margin-top:clamp(72px,10vw,120px);padding-top:clamp(40px,6vw,64px);border-top:1px solid var(--night-line)}
+.tech-v{position:relative;width:min(100%,320px);margin:0 auto;aspect-ratio:9/16;overflow:hidden;border-radius:6px;background:#000}
+.tech-v video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tech-v .play{position:absolute;z-index:2;left:12px;bottom:15px;display:flex;align-items:center;gap:7px;width:auto;height:34px;padding:0 14px 0 13px;border-radius:999px}
+.tech-v .play svg{width:10px;height:10px;margin-left:0}
+.tech-v.on .play{animation:none;background:rgba(0,0,0,.55);color:#fff}
+.tech-k{font-size:12px;font-weight:500;color:var(--night-sub);letter-spacing:.14em}
+.tech h3{margin-top:6px;font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,34px);line-height:1.45;letter-spacing:.06em}
+.tech-t > p{margin-top:12px;font-size:14px;line-height:1.9;color:var(--night-sub)}
+.tech ol{margin-top:22px;list-style:none;border-top:1px solid var(--night-line)}
+.tech li button{display:grid;grid-template-columns:3.2em 1fr;width:100%;padding:14px 0;text-align:left;border-bottom:1px solid var(--night-line);transition:color .25s}
+.tech li .tm{font-size:12px;color:var(--night-sub);padding-top:.25em;font-variant-numeric:tabular-nums}
+.tech li b{display:block;font-size:14.5px;font-weight:700;letter-spacing:.04em}
+.tech li span.d{display:block;margin-top:2px;font-size:12.5px;line-height:1.75;color:var(--night-sub)}
+.tech li button:hover b,.tech li button.cur b{color:#d8f04a}
+.tech li button.cur .tm{color:#d8f04a}
+@media (min-width:860px){.tech{grid-template-columns:320px minmax(0,1fr);align-items:center}.tech-v{margin:0}}
 .card{display:block;text-align:left;width:100%}
 .thumb{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:4px;background:#161616}
 .thumb img,.thumb video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -209,8 +235,8 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .thumb video.playing{opacity:1}
 .card:hover .thumb img{transform:scale(1.04)}
 .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.35));pointer-events:none}
-.thumb .play{position:absolute;z-index:1;right:10px;bottom:10px;width:38px;height:38px;opacity:.94}
-.thumb .play svg{width:11px;height:11px}
+.thumb .play,.case .media .play{position:absolute;z-index:2;left:10px;bottom:13px;display:flex;align-items:center;gap:7px;width:auto;height:34px;padding:0 14px 0 13px;border-radius:999px;opacity:.96}
+.thumb .play svg,.case .media .play svg{width:10px;height:10px;margin-left:0}
 .card .cat{display:block;margin-top:16px;font-size:11px;color:var(--night-sub);letter-spacing:.12em}
 .card h3{margin-top:4px;font-size:14px;font-weight:500;line-height:1.6;letter-spacing:.04em}
 .card .one{margin-top:6px;font-size:12px;line-height:1.75;color:var(--night-sub)}
@@ -235,7 +261,6 @@ body::after{content:"";position:fixed;inset:-50%;z-index:60;pointer-events:none;
 .case .media img,.case .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .case .media video{opacity:0;transition:opacity .7s}
 .case .media video.playing{opacity:1}
-.case .media .play{position:absolute;right:12px;bottom:12px;width:42px;height:42px;z-index:1}
 .case .cat{font-size:11px;color:var(--sub);letter-spacing:.14em}
 .case h3{margin-top:6px;font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,34px);line-height:1.45;letter-spacing:.06em}
 .case dl{margin-top:26px}
@@ -394,7 +419,8 @@ dialog[open] .pl{animation:fadein .5s var(--ease)}
       <button class="reel fade d3 js-play" data-id="uXufWKkc0Q8" data-title="自己紹介PV" data-text="企画・構成から編集まで。目的に合わせた表現の幅を紹介しています。" aria-label="自己紹介PVを再生">
         <img src="https://img.youtube.com/vi/uXufWKkc0Q8/maxresdefault.jpg" alt="" width="1280" height="720">
         <video muted playsinline loop preload="none" data-clip="uXufWKkc0Q8"></video>
-        <span class="cap"><span class="play"><svg viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg></span>自己紹介PVを見る</span>
+        <span class="cap"><span class="play"><svg viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg></span>自己紹介PVを再生<small>音あり</small></span>
+        <i class="pv" aria-hidden="true"></i>
       </button>
     </div>
     <span class="scrollcue" aria-hidden="true"></span>
@@ -500,6 +526,25 @@ dialog[open] .pl{animation:fadein .5s var(--ease)}
       <div class="rail" id="rail"></div>
       <div class="progress" aria-hidden="true"><i id="bar"></i></div>
       <div class="feature" id="feature"></div>
+      <div class="tech rv" id="tech">
+        <div class="tech-v">
+          <video muted playsinline loop preload="none" poster="media/motion-tech.jpg" data-src="media/motion-tech.mp4" aria-label="ストーリーズの動きの見本（30秒）"></video>
+          <button class="play" type="button" id="techsnd"><svg viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg><b>音つきで見る</b></button>
+          <i class="pv" aria-hidden="true"></i>
+        </div>
+        <div class="tech-t">
+          <p class="tech-k">テクニック紹介</p>
+          <h3>ストーリーズを、<br>ここまで動かす。</h3>
+          <p>Instagramのストーリーズに、目が止まる動きをつけた30秒の見本です。気になる動きを押すと、その場面から再生します。</p>
+          <ol>
+            <li><button type="button" data-t="1.3"><span class="tm">0:01</span><span><b>口コミ249件が、一気に降ってくる</b><span class="d">口コミのカードが降りそそぎ、件数が数え上がる</span></span></button></li>
+            <li><button type="button" data-t="6.3"><span class="tm">0:06</span><span><b>骨格の上を、カメラが走る</b><span class="d">骨格の図の上をカメラが動き、施術する場所を示す</span></span></button></li>
+            <li><button type="button" data-t="11.3"><span class="tm">0:11</span><span><b>実績の数字が、回って止まる</b><span class="d">数字がくるくる回って止まり、実績を印象に残す</span></span></button></li>
+            <li><button type="button" data-t="16.3"><span class="tm">0:16</span><span><b>スライドひとつで、変化がわかる</b><span class="d">施術の前と後を、1枚の中で見比べられる</span></span></button></li>
+            <li><button type="button" data-t="21.3"><span class="tm">0:21</span><span><b>7つのケアが積み上がり、価格が下がる</b><span class="d">ケアの内容が積み上がり、まとめた価格のお得さが伝わる</span></span></button></li>
+          </ol>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -589,7 +634,7 @@ dialog[open] .pl{animation:fadein .5s var(--ease)}
 
 <script>
 // short preview loops that exist in clips/ (YouTube ID); others show the still thumbnail
-const CLIPS=new Set(["swvdBrBjS6M","kogao-reel","uXufWKkc0Q8","-GYIwfv-Rl8","C1VOc-5YP-g","dbI2MsLsfEA","bGGxuGsrlu8","1qhzuGPzdlg","Drn8smpYTE0","myFZDLKI1Mg","5ngwPOzo8Jo"]);
+const CLIPS=new Set(["okinawa-trip","swvdBrBjS6M","kogao-reel","uXufWKkc0Q8","-GYIwfv-Rl8","C1VOc-5YP-g","dbI2MsLsfEA","bGGxuGsrlu8","1qhzuGPzdlg","Drn8smpYTE0","myFZDLKI1Mg","5ngwPOzo8Jo"]);
 const works=[
  {id:"swvdBrBjS6M",v:1,img:"clips/swvdBrBjS6M-thumb.jpg",cat:"3D×モーション",t:"漢方アロマの3Dリール",s:"3Dグラフィックとモーショングラフィックスを掛け合わせた、贅沢な一本。",d:"3Dグラフィックとモーショングラフィックスを掛け合わせた、贅沢な40秒のリール。アニメの女性が線画へほどけ、光の線が肺から親指までの通り道をたどります。一滴が落ちた先に現れるのは、光の反射や液体の透明感まで作り込んだ3Dの小瓶。ナレーションと音楽も重ね、目に見えない香りの世界を映像にしました。"},
  {id:"kogao-reel",v:1,src:"media/kogao-reel.mp4",img:"clips/kogao-reel-thumb.jpg",cat:"図解・3D",t:"小顔矯正の解説リール",s:"頭蓋骨の立体イラストで、顔幅が整う理由を見せる。",d:"「顔の大きさは骨格だから仕方ない」という思い込みに、頭蓋骨の立体イラストで答える38秒のリール。エラ・むくみ・頬骨の位置を示し、施術前と後の変化まで一続きで見せました。"},
@@ -600,9 +645,10 @@ const works=[
  {id:"1qhzuGPzdlg",v:1,cat:"アニメーション",t:"キャラクターアニメ",s:"掛け合いとユーモアで、情報を物語として届ける。",d:"説明だけでは伝わりにくいサービスの魅力を、キャラクター同士の掛け合いで表現。セリフのテンポ・表情・場面の切り替えを工夫しました。"},
  {id:"Drn8smpYTE0",v:1,cat:"モーション",t:"ポップアート告知CM",s:"鮮やかな配色と大胆な文字で、告知を印象に残す。",d:"予約再開という大切なお知らせを短時間で届けるため、大胆な文字と鮮やかな配色で目を引く構成に。店名・内容・日付を大事な順に見せています。"},
  {id:"myFZDLKI1Mg",v:1,cat:"解説・対話",t:"図解と実写の解説リール",s:"身近な疑問から、専門知識をわかりやすく。",d:"顔の左右差という身近な悩みを入り口に、専門知識を実写・図解・テロップでわかりやすく表現。疑問から理解、そして施術への関心へつなげました。"},
+ {id:"okinawa-trip",v:0,src:"media/okinawa-trip.mp4",img:"clips/okinawa-trip.jpg",cat:"旅ムービー",t:"沖縄の旅ムービー",s:"旅の写真と動画を、雑誌のページをめくるような1分に。",d:"スマートフォンで撮った旅の写真と動画を、雑誌の誌面のように組んだ1分の作品。「SEA」の文字の中に海を流し込み、机に広げた写真やページをめくる動きで、思い出を一冊の本のようにまとめました。人物の顔は隠しています。"},
  {id:"5ngwPOzo8Jo",v:0,cat:"ブランド映像",t:"シネマティックCM",s:"光・影・余白でつくる世界観から、ブランドの価値を伝える。",d:"商品の機能を説明するだけでなく、映像の質感からブランドの価値を感じてもらうコンセプトCM。情報を絞り、静けさと緊張感を演出しました。"}
 ];
-const playIcon='<span class="play"><svg viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg></span>';
+const playIcon='<span class="play"><svg viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z" fill="currentColor"/></svg><b>音つきで見る</b></span><i class="pv" aria-hidden="true"></i>';
 const card=w=>`
  <button class="card rv js-play${w.v?'':' wide'}" data-id="${w.id}" data-v="${w.v}"${w.src?` data-src="${w.src}"`:''} data-title="${w.t}" data-text="${w.d}" aria-label="${w.t}を再生">
   <div class="thumb"><img src="${w.img||`https://img.youtube.com/vi/${w.id}/maxresdefault.jpg`}" alt="" loading="lazy" width="1280" height="720"><video muted playsinline loop preload="none" data-clip="${w.id}"></video>${playIcon}</div>
@@ -680,7 +726,36 @@ const vio=new IntersectionObserver(es=>es.forEach(e=>{
     if(!reduce)v.play().catch(()=>{});
   }else v.pause();
 }),{threshold:.35});
-vids.forEach(v=>{v.addEventListener('playing',()=>v.classList.add('playing'));vio.observe(v)});
+vids.forEach(v=>{
+  v.addEventListener('playing',()=>v.classList.add('playing'));
+  const pv=v.parentElement.querySelector('.pv');
+  if(pv)v.addEventListener('timeupdate',()=>pv.style.setProperty('--p',v.duration?v.currentTime/v.duration:0));
+  vio.observe(v);
+});
+
+// technique showcase: plays muted on screen; the list jumps to each move, the button turns the sound on
+(()=>{
+  const box=document.querySelector('.tech-v'); if(!box)return;
+  const v=box.querySelector('video'),pv=box.querySelector('.pv'),snd=document.getElementById('techsnd'),lab=snd.querySelector('b');
+  const chs=[...document.querySelectorAll('.tech li button')],ts=chs.map(b=>+b.dataset.t);
+  const load=()=>{if(!v.src)v.src=v.dataset.src};
+  new IntersectionObserver(([e])=>{if(e.isIntersecting){load();if(!reduce)v.play().catch(()=>{})}else v.pause()},{threshold:.35}).observe(box);
+  v.addEventListener('timeupdate',()=>{
+    pv.style.setProperty('--p',v.duration?v.currentTime/v.duration:0);
+    let k=-1;ts.forEach((t,i)=>{if(v.currentTime>=t-.2)k=i});
+    chs.forEach((b,i)=>b.classList.toggle('cur',i===k));
+  });
+  snd.addEventListener('click',()=>{
+    load();
+    if(box.classList.contains('on')){v.muted=true;box.classList.remove('on');lab.textContent='音つきで見る';return}
+    v.currentTime=0;v.muted=false;box.classList.add('on');lab.textContent='音を消す';v.play().catch(()=>{});
+  });
+  chs.forEach(b=>b.addEventListener('click',()=>{
+    load();v.currentTime=+b.dataset.t;v.play().catch(()=>{});
+    // on phones the list sits under the video: bring the video back into view
+    const r=box.getBoundingClientRect();if(r.top<0||r.bottom>innerHeight)box.scrollIntoView({behavior:'smooth',block:'center'});
+  }));
+})();
 
 // player
 const dlg=document.getElementById('player'),frame=document.getElementById('frame');
